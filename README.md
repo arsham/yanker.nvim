@@ -39,7 +39,7 @@ Use your favourite package manager to install this library. Packer example:
 use({
   "arsham/yanker.nvim",
   config = function() require("yanker").config({}) end,
-  requires = { "arshlib.nvim", "fzf.vim" },
+  requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
 })
 ```
 
@@ -63,7 +63,7 @@ events is fired or a buffer is opened. Packer example:
 use({
   "arsham/yanker.nvim",
   config = function() require("yanker").config({}) end,
-  requires = { "arshlib.nvim", "fzf.vim" },
+  requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
   event = { "BufRead", "BufNewFile" },
   keys = { "<leader>yh", },
 })
