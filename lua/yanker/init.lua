@@ -1,4 +1,3 @@
-local quick = require("arshlib.quick")
 local colour = require("arshlib.colour")
 require("arshlib.util")
 
@@ -6,13 +5,14 @@ local store = {} --{{{
 __Clipboard_storage = __Clipboard_storage or _t()
 store = __Clipboard_storage
 
--- stylua: ignore start
-quick.augroup{"CLIPBOARD", {
-  {"TextYankPost", "*", function()
+local clipboard_group = vim.api.nvim_create_augroup("CLIPBOARD", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = clipboard_group,
+  pattern = "*",
+  callback = function()
     table.insert(store, 1, vim.v.event)
-  end},
-}}
--- stylua: ignore end
+  end,
+})
 --}}}
 
 local defaults = {
@@ -86,7 +86,7 @@ return {
           vim.fn.setreg('"', value, type)
         end --}}}
         vim.fn["fzf#run"](wrapped)
-      end, { noremap = true, silent = true, desc = "Show yank history" })
+      end, { silent = true, desc = "Show yank history" })
     end
   end,
 }
