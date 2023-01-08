@@ -8,6 +8,8 @@ Neovim plugin for quickly create random highlights for matches.
 1. [Demo](#demo)
 2. [Requirements](#requirements)
 3. [Installation](#installation)
+   - [Lazy](#lazy)
+   - [Packer](#packer)
    - [Config](#config)
    - [Lazy Loading](#lazy-loading)
 4. [License](#license)
@@ -22,7 +24,8 @@ choose one of the yanked items in the history and paste.
 
 ## Requirements
 
-This library supports [Neovim 0.7.0](https://github.com/neovim/neovim/releases/tag/v0.7.0).
+This library supports [Neovim
+v0.7.0](https://github.com/neovim/neovim/releases/tag/v0.7.0) or newer.
 
 This plugin depends are the following libraries. Please make sure to add them
 as dependencies in your package manager:
@@ -32,13 +35,29 @@ as dependencies in your package manager:
 
 ## Installation
 
-Use your favourite package manager to install this library. Packer example:
+Use your favourite package manager to install this library.
+
+### Lazy
+
+```lua
+{
+	"arsham/yanker.nvim",
+  dependencies = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
+  config = true,
+  -- or to provide configurations
+  -- config = { history = "<leader>yh" },
+}
+```
+
+### Packer
 
 ```lua
 use({
-  "arsham/yanker.nvim",
-  config = function() require("yanker").config({}) end,
-  requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
+	"arsham/yanker.nvim",
+	config = function()
+		require("yanker").config({})
+	end,
+	requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
 })
 ```
 
@@ -49,7 +68,7 @@ change it to your liking. For example:
 
 ```lua
 require("yanker").config({
-  history = "<leader>yh",
+	history = "<leader>yh",
 })
 ```
 
@@ -60,11 +79,13 @@ events is fired or a buffer is opened. Packer example:
 
 ```lua
 use({
-  "arsham/yanker.nvim",
-  config = function() require("yanker").config({}) end,
-  requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
-  event = { "BufRead", "BufNewFile" },
-  keys = { "<leader>yh", },
+	"arsham/yanker.nvim",
+	config = function()
+		require("yanker").config({})
+	end,
+	requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
+	event = { "BufRead", "BufNewFile" },
+	keys = { "<leader>yh" },
 })
 ```
 

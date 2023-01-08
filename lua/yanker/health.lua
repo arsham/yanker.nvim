@@ -1,5 +1,5 @@
 local M = {}
-local health = require("health")
+local health = vim.health
 
 M.check = function()
   health.report_start("Yanker Health Check")
