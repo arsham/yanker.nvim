@@ -53,11 +53,11 @@ Use your favourite package manager to install this library.
 
 ```lua
 use({
-	"arsham/yanker.nvim",
-	config = function()
-		require("yanker").config({})
-	end,
-	requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
+  "arsham/yanker.nvim",
+  config = function()
+    require("yanker").config({})
+  end,
+  requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
 })
 ```
 
@@ -68,7 +68,7 @@ change it to your liking. For example:
 
 ```lua
 require("yanker").config({
-	history = "<leader>yh",
+  history = "<leader>yh",
 })
 ```
 
@@ -79,13 +79,13 @@ events is fired or a buffer is opened. Packer example:
 
 ```lua
 use({
-	"arsham/yanker.nvim",
-	config = function()
-		require("yanker").config({})
-	end,
-	requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
-	event = { "BufRead", "BufNewFile" },
-	keys = { "<leader>yh" },
+  "arsham/yanker.nvim",
+  config = function()
+    require("yanker").config({})
+  end,
+  requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
+  event = { "BufRead", "BufNewFile" },
+  keys = { "<leader>yh" },
 })
 ```
 
