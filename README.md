@@ -3,7 +3,7 @@
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/arsham/yanker.nvim)
 ![License](https://img.shields.io/github/license/arsham/yanker.nvim)
 
-Neovim plugin for quickly create random highlights for matches.
+Neovim plugin for remembering your yanks.
 
 1. [Demo](#demo)
 2. [Requirements](#requirements)
@@ -75,7 +75,9 @@ require("yanker").config({
 ### Lazy Loading
 
 You can let your package manager to load this plugin when a key-mapping
-events is fired or a buffer is opened. Packer example:
+events is fired or a buffer is opened.
+
+Packer example:
 
 ```lua
 use({
@@ -87,6 +89,18 @@ use({
   event = { "BufRead", "BufNewFile" },
   keys = { "<leader>yh" },
 })
+```
+
+Lazy example:
+
+```lua
+{
+  "arsham/yanker.nvim",
+  dependencies = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
+  config = true,
+  event = { "BufRead", "BufNewFile" },
+  keys = { "<leader>yh" },
+}
 ```
 
 ## License

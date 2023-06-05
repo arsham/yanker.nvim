@@ -1,0 +1,151 @@
+*yanker.txt*                                                           Yanker
+
+                Neovim plugin for remembering your yanks.
+
+
+
+                                             ,-.                        ~
+                                         ,--/ /|                        ~
+                                 ,---, ,--. :/ |             __  ,-.    ~
+                             ,-+-. /  |:  : ' /            ,' ,'/ /|    ~
+          .--,   ,--.--.    ,--.'|'   ||  '  /      ,---.  '  | |' |    ~
+        /_ ./|  /       \  |   |  ,"' |'  |  :     /     \ |  |   ,'    ~
+     , ' , ' : .--.  .-. | |   | /  | ||  |   \   /    /  |'  :  /      ~
+    /___/ \: |  \__\/: . . |   | |  | |'  : |. \ .    ' / ||  | '       ~
+     .  \  ' |  ," .--.; | |   | |  |/ |  | ' \ \'   ;   /|;  : |       ~
+      \  ;   : /  /  ,.  | |   | |--'  '  : |--' '   |  / ||  , ;       ~
+       \  \  ;;  :   .'   \|   |/      ;  |,'    |   :    | ---'        ~
+        :  \  \  ,     .-./'---'       '--'       \   \  /              ~
+         \  ' ;`--`---'                            `----'               ~
+          `--`                                                          ~
+
+
+Author:   Arsham Shirvani <arsham@duck.com>
+Homepage: <https://github.com/arsham/yanker.nvim>
+License:  MIT license
+
+==============================================================================
+CONTENTS                                                     *yanker-contents*
+
+1. Introduction ........................................ |yanker-introduction|
+2. Requirements ........................................ |yanker-requirements|
+3. Installation ........................................ |yanker-installation|
+   - Lazy ......................................... |yanker-installation-lazy|
+   - Packer ..................................... |yanker-installation-packer|
+   - Lazy Loading ......................... |yanker-installation-lazy-loading|
+   - Configuration .................................... |yanker-configuration|
+4. Mappings ................................................ |yanker-mappings|
+5. License .................................................. |yanker-license|
+
+==============================================================================
+INTRODUCTION                                             *yanker-introduction*
+
+Neovim plugin for remembering your yanks.
+
+==============================================================================
+REQUIREMENTS                                             *yanker-requirements*
+
+This library supports Neovim v0.7.0 or newer.
+
+This library depends are the following libraries. Please make sure to add them
+as dependencies in your package manager:
+
+ Project         Link                                      Reason for using
+------------------------------------------------------------------------------
+ arshlib.nvim  <https://github.com/arsham/arshlib.nvim>   common library
+ fzf.vim       <https://github.com/junegunn/fzf.vim>      selector library
+
+==============================================================================
+INSTALLATION                                             *yanker-installation*
+
+Use your favourite package manager to install this library.
+
+LAZY                                                *yanker-installation-lazy*
+------------------------------------------------------------------------------
+
+>lua
+  {
+    "arsham/yanker.nvim",
+    dependencies = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
+    config = true,
+    -- or to provide configuration
+    -- config = { add = "<leader>yh", .. }
+  }
+<
+
+PACKER                                            *yanker-installation-packer*
+------------------------------------------------------------------------------
+
+>lua
+  use({
+    "arsham/yanker.nvim",
+    requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
+    config = function()
+      require("yanker").config({})
+    end,
+  })
+<
+
+LAZY LOADING                                *yanker-installation-lazy-loading*
+------------------------------------------------------------------------------
+
+You can let your package manager to load this plugin when a key-mapping
+event is fired.
+
+For Packer:
+
+>lua
+  use({
+    "arsham/yanker.nvim",
+    requires = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
+    config = function()
+      require("yanker").config({})
+    end,
+    event = { "BufRead", "BufNewFile" },
+    keys = { "<leader>yh" },
+  })
+<
+
+For Lazy:
+
+>lua
+  {
+    "arsham/yanker.nvim",
+    dependencies = { "arsham/arshlib.nvim", "junegunn/fzf.vim" },
+    config = true,
+    event = { "BufRead", "BufNewFile" },
+    keys = { "<leader>yh" },
+  }
+<
+
+==============================================================================
+MAPPINGS                                                     *yanker-mappings*
+
+*LEADER-yh*  Show yank history and choone one               *yanker_LEADER-yh*
+
+==============================================================================
+LICENSE                                                       *yanker-license*
+
+MIT License
+
+Copyright (c) 2023 Arsham Shirvani
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+vim:tw=78:ts=8:ft=help:norl:

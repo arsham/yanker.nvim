@@ -1,14 +1,19 @@
 local M = {}
-local health = vim.health
+
+local libs = {
+  arshlib = "arsham/arshlib.nvim",
+}
 
 M.check = function()
-  health.report_start("Yanker Health Check")
-  if not pcall(require, "arshlib") then
-    health.report_error("arshlib.nvim was not found", {
-      'Please install "arsham/arshlib.nvim"',
-    })
-  else
-    health.report_ok("arshlib.nvim is installed")
+  vim.health.start("MatchMaker Health Check")
+  for name, package in pairs(libs) do
+    if not pcall(require, name) then
+      vim.health.error(package .. " was not found", {
+        'Please install "' .. package .. '"',
+      })
+    else
+      vim.health.ok(package .. " is installed")
+    end
   end
 end
 
